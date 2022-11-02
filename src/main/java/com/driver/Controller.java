@@ -23,8 +23,10 @@ public class Controller {
     }
 
     @GetMapping("/get-book-by-id/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable int id){
-        return new ResponseEntity<>(bookService.getBookById(id), HttpStatus.OK);
+    public ResponseEntity<Book> getBookById(@PathVariable String id){
+
+        int id_ = Integer.parseInt(id);
+        return new ResponseEntity<>(bookService.getBookById(id_), HttpStatus.OK);
     }
 
     @GetMapping("/get-all-books")
@@ -48,7 +50,8 @@ public class Controller {
     }
 
     @DeleteMapping("/delete-book-by-id/{id}")
-    public ResponseEntity<String> deleteBookById(@PathVariable int id){
+    public ResponseEntity<String> deleteBookById(@PathVariable String id_){
+        int id = Integer.parseInt(id_);
         bookService.deleteBookById(id);
         return new ResponseEntity<>("success", HttpStatus.OK);
     }
@@ -58,6 +61,5 @@ public class Controller {
         bookService.DeleteAllBooks();
         return new ResponseEntity<>("success", HttpStatus.OK);
     }
-
 
 }
