@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/books")
-public class BookController {
+public class Controller {
 
     @Autowired
     BookService bookService;
